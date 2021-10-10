@@ -20,6 +20,7 @@ Help()
    echo
    echo "Syntax: scriptTemplate [-g|h|t|v|V]"
    echo "options:"
+   echo "h        Impreme a axuda."
    echo
 }
 
@@ -40,9 +41,9 @@ done
 
 # arrancamos todo
 
-echo " ${GREEN} Arrancamos todo.... ${END}"
-echo " ${GREEN} Creando carpeta personal $USER ${END}"
-echo " ${GREEN} Esto levara un momento ${END}"
+echo " ${GREEN}Arrancamos todo.... ${END}"
+echo " ${GREEN}Creando carpeta personal $USER ${END}"
+echo " ${GREEN}Esto levara un momento ${END}"
 cd $HOME
 mkdir .$USER
 cd .$USER
@@ -50,14 +51,16 @@ mkdir Proxectos
 mkdir scripts
 mkdir senhas
 mkdir ficheiros
-echo " ${GREEN} Creada a estructura das carpetas $USER ${END}"
+echo " ${GREEN}Creada a estructura das carpetas $USER ${END}"
 cd $HOME/.$USER/scripts
 git clone https://github.com/fdezfebrero/scripts.git
-echo " ${GREEN} Cargados os scripts ${END}"
+echo " ${GREEN}Cargados os scripts ${END}"
 export PATH="$PATH:$HOME/.$USER/scripts/scripts"
-cp senha $HOME/.$USER/senhas
-echo " ${GREEN} Añadido ficheiro de contrasinales ${END}"
-echo " ${GREEN} Configurando Shell Zsh e temas ${END}"
+
+cp $HOME/.$USER/scripts/scripts/senha $HOME/.$USER/senhas
+echo " ${GREEN}Añadido ficheiro de contrasinales ${END}"
+echo "....."
+echo " ${GREEN}Configurando Shell Zsh e temas ${END}"
 if [ $(uname) = $LINUX ];then
   if [ -d ~/.zshrc ];then
     sudo apt install git curl -y
@@ -76,7 +79,7 @@ if [ $(uname) = $DARWIN ];then
 
   fi
 fi
-echo " ${GREEN} Configurado o PATH e os Alias ${END}"
+echo " ${GREEN}Configurado o PATH e os Alias ${END}"
 cd $HOME
 if [ -f $HOME/.zshrc ];then
   cd $HOME
@@ -89,9 +92,10 @@ elif [[ -f $HOME/.bshrc ]]; then
   echo "# Añadimos Scripts o Path">>.bashrc
   echo "export PATH="$PATH:$HOME/.$USER/scripts/scripts"">>.bshrc
 else
-  echo "Nin bash ni zsh, que merda tes?"
+  echo "Nin bash ni zsh, que merda tes? Non se pode añadir o Path os scripts"
 
 fi
+
 if [ -f $HOME/.zshrc ];then
   if grep -E DIRJ .zshrc;then
     echo "xa existe o alias"
@@ -109,7 +113,6 @@ elif [[ -f $HOME/.bshrc ]]; then
     echo "alias DIRJ=$HOME/.$USER">>.bashrc
   fi
 else
-  echo "Nin bash ni zsh, que merda tes?"
+  echo "Nin bash ni zsh, que merda tes?. Non se poden añadir os alias"
 
 fi
-
