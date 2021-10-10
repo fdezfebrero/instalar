@@ -82,12 +82,12 @@ if [ -f $HOME/.zshrc ];then
   cd $HOME
   echo " ">>.zshrc
   echo "# Añadimos Scripts o Path">>.zshrc
-  echo "export PATH="$PATH:/Users/febrero/.febrero/scripts/scripts"">>.zshrc
+  echo "export PATH="$PATH:$HOME/.$USER/scripts/scripts"">>.zshrc
 elif [[ -f $HOME/.bshrc ]]; then
   cd $HOME
   echo " ">>.bashrc
   echo "# Añadimos Scripts o Path">>.bashrc
-  echo "export PATH="$PATH:/Users/febrero/.febrero/scripts/scripts"">>.bshrc
+  echo "export PATH="$PATH:$HOME/.$USER/scripts/scripts"">>.bshrc
 else
   echo "Nin bash ni zsh, que merda tes?"
 
