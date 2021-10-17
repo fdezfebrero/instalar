@@ -96,23 +96,32 @@ else
 
 fi
 
-if [ -f $HOME/.zshrc ];then
-  if grep -E DIRJ .zshrc;then
-    echo "xa existe o alias"
-  else
-    echo " ">>.zshrc
-    echo "# Alias Propios">>.zshrc
-    echo "alias DIRJ=$HOME/.$USER">>.zshrc
-  fi
-elif [[ -f $HOME/.bshrc ]]; then
-  if grep -E DIRJ .bashrc;then
-    echo "xa existe o alias"
-  else
-    echo " ">>.bashrc
-    echo "# Alias Propios">>.bashrc
-    echo "alias DIRJ=$HOME/.$USER">>.bashrc
-  fi
-else
-  echo "Nin bash ni zsh, que merda tes?. Non se poden añadir os alias"
+#if [ -f $HOME/.zshrc ];then
+#  if grep -E DIRJ .zshrc;then
+#    echo "xa existe o alias"
+#  else
+#    echo " ">>.zshrc
+#    echo "# Alias Propios">>.zshrc
+#    echo "alias DIRJ=$HOME/.$USER">>.zshrc
+#  fi
+#elif [[ -f $HOME/.bshrc ]]; then
+#  if grep -E DIRJ .bashrc;then
+#    echo "xa existe o alias"
+#  else
+#    echo " ">>.bashrc
+#    echo "# Alias Propios">>.bashrc
+#    echo "alias DIRJ=$HOME/.$USER">>.bashrc
+#  fi
+#else
+#  echo "Nin bash ni zsh, que merda tes?. Non se poden añadir os alias"
+#
+#fi
 
+
+echo "Copiamos archivos Zsh e añadimos repo en proxecto$USER"
+cd $HOME/.$USER/Proxectos
+if git clone https://github.com/fdezfebrero/bash_zsh.git; then
+  bash_zsh -g
+else
+  echo "Error o cargar o archivo ZSH"
 fi
